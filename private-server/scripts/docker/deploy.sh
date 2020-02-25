@@ -1,0 +1,17 @@
+export DOCKER_USER_NAME=panupongdeve
+export DOCKER_ACCESS_TOKEN=151f72e4-d475-46b7-8924-170bab28168a
+export DOCKER_TAG=v0.1
+export DOCKER_REPO=private-node-web
+
+
+docker login -u $DOCKER_USER_NAME -p $DOCKER_ACCESS_TOKEN
+
+docker build -t $DOCKER_USER_NAME/$DOCKER_REPO:$DOCKER_TAG .
+
+docker tag $DOCKER_USER_NAME/$DOCKER_REPO:$DOCKER_TAG $DOCKER_USER_NAME/$DOCKER_REPO:latest
+
+docker image ls
+
+docker push $DOCKER_USER_NAME/$DOCKER_REPO:$DOCKER_TAG
+
+docker push $DOCKER_USER_NAME/$DOCKER_REPO:latest
